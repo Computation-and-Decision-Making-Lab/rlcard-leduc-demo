@@ -34,3 +34,8 @@ package-lock.json
 
 douzero_pretrained
 dmc_pretrained
+
+venv/
+venv_old/
+node_modules/
+__pycache__/
