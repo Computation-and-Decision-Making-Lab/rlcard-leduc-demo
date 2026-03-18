@@ -18,10 +18,8 @@ RealCard2EnvCard = {'3': 3, '4': 4, '5': 5, '6': 6, '7': 7,
                     '8': 8, '9': 9, 'T': 10, 'J': 11, 'Q': 12,
                     'K': 13, 'A': 14, '2': 17, 'X': 20, 'D': 30}
 
-pretrained_dir = 'pretrained/douzero_pretrained'
-players = []
-for position in ['landlord', 'landlord_down', 'landlord_up']:
-    players.append(DeepAgent(position, pretrained_dir, use_onnx=True))
+players = [None, None, None]
+
     
 @app.route('/predict', methods=['POST'])
 def predict():
@@ -101,8 +99,9 @@ def predict():
             info_set.legal_actions = _get_legal_card_play_actions(player_hand_cards, rival_move)
 
             # Prediction
-            actions, actions_confidence = players[player_position].act(info_set)
-            actions = [''.join([EnvCard2RealCard[a] for a in action]) for action in actions]
+            # Prediction (dummy since AI disabled)
+            actions = []
+            actions_confidence = []
             result = {}
             win_rates = {}
             for i in range(len(actions)):
